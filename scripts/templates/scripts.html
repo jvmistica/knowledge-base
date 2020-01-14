@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <h4>{{ menu_title }}</h4>
+    <p>{{ menu_description }}</p>
+    <ul>
+        {% for item in items %}
+            <li><a href="/{{ action_item }}/{{ item }}">{{ item }}</a></li>
+        {% endfor %}
+        {% block content%}{% endblock %}
+    </ul>
+</body>
+
+</html>
