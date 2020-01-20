@@ -26,3 +26,11 @@ def add_note():
         insert_record("Notes", title=form.data.get("title"), description=form.data.get("description"))
         return redirect(url_for("notes_bp.list_notes"))
     return render_template("new_record.html", title="Notes | New", form=form)
+
+
+@notes_bp.route("/notes/<note_id>/delete", methods=["GET"])
+def delete_note(note_id):
+    delete_record("Notes", note_id)
+    notes = search_table("Notes", "title")
+    description = "This is the notes page for the Knowledge Base web application."
+    return render_template("lists.html", title="Notes", header="Notes", description=description, items=notes)

@@ -28,3 +28,11 @@ def add_recipe():
         insert_record("Recipes", title=form.data.get("title"), description=form.data.get("description"))
         return redirect(url_for("recipes_bp.list_recipes"))
     return render_template("new_record.html", title="Recipes | New", form=form)
+
+
+@recipes_bp.route("/recipes/<recipe_id>/delete", methods=["GET"])
+def delete_recipe(recipe_id):
+    delete_record("Recipes", recipe_id)
+    recipes = search_table("Recipes", "title")
+    description = "This is the recipes page for the Knowledge Base web application."
+    return render_template("lists.html", title="Recipes", header="Recipes", description=description, items=recipes)

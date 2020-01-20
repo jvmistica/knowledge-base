@@ -28,3 +28,11 @@ def add_dashboard():
         insert_record("Dashboards", title=form.data.get("title"), description=form.data.get("description"))
         return redirect(url_for("dashboards_bp.list_dashboards"))
     return render_template("new_record.html", title="Dashboards | New", form=form)
+
+
+@dashboards_bp.route("/dashboards/<dashboard_id>/delete", methods=["GET"])
+def delete_dashboard(dashboard_id):
+    delete_record("Dashboards", dashboard_id)
+    dashboards = search_table("Dashboards", "title")
+    description = "This is the dashboards page for the Knowledge Base web application."
+    return render_template("lists.html", title="Dashboards", header="Dashboards", description=description, items=dashboards)

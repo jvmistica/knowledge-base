@@ -28,3 +28,11 @@ def add_script():
         insert_record("Scripts", title=form.data.get("title"), description=form.data.get("description"))
         return redirect(url_for("scripts_bp.list_scripts"))
     return render_template("new_record.html", title="Scripts | New", form=form)
+
+
+@scripts_bp.route("/scripts/<script_id>/delete", methods=["GET"])
+def delete_script(script_id):
+    delete_record("Scripts", script_id)
+    scripts = search_table("Scripts", "title")
+    description = "This is the scripts page for the Knowledge Base web application."
+    return render_template("lists.html", title="Scripts", header="Scripts", description=description, items=scripts)

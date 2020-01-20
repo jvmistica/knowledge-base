@@ -49,6 +49,11 @@ def search_record(table_name, title):
     return records
 
 
+def delete_record(table_name, title):
+    with db.connect() as conn:
+        records = conn.execute(f"DELETE FROM {table_name} WHERE title = '{title}';")
+
+
 def drop_table(table_name):
     with db.connect() as conn:
         conn.execute("DROP TABLE {table_name};")
