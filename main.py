@@ -1,9 +1,10 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import Flask, render_template
 from dashboards.dashboards_routes import dashboards_bp
 from notes.notes_routes import notes_bp
 from recipes.recipes_routes import recipes_bp
 from scripts.scripts_routes import scripts_bp
 from searches.searches_routes import searches_bp
+
 
 app = Flask(__name__)
 app.register_blueprint(dashboards_bp)

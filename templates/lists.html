@@ -23,7 +23,7 @@
         {% for item in items %}
             <li><a href="/{{ title.lower() }}/{{ item[0] }}">{{ item[0] }}</a>
                 <a href="/{{ title.lower() }}/{{ item[0] }}/delete">delete</a>
-                <a href="">edit</a>
+                <a href="/{{ title.lower() }}/{{ item[0] }}/edit">edit</a>
             </li>
         {% endfor %}
         {% block content%}{% endblock %}

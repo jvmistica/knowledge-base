@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, SelectField
+from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired, Length
 from wtforms.widgets import TextArea
 
@@ -32,5 +32,3 @@ class ScriptsForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired(), Length(min=2, max=50)])
     description = StringField("Description", widget=TextArea())
     submit = SubmitField("Save")
-
-
