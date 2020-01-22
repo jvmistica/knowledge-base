@@ -6,4 +6,4 @@
 **Notes**\
 **Recipes**\
 **Scripts**\
-**Searches**\
+**Searches**
