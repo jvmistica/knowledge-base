@@ -24,9 +24,12 @@
                         {% endif %}
                     </div>
                     <br />
+                    
                     <div class="form-group">
                         {{ form.description.label(class="form-control-label") }}
-    
+                    </div>
+
+                    <div class="form-group">
                         {% if form.description.errors %}
                             {{ form.description(class="form-control form-control-lg is-invalid") }}
                             <div class="invalid-feedback">
@@ -35,7 +38,7 @@
                                 {% endfor %}
                             </div>
                         {% else %}
-                            {{ form.description(class="form-control form-control-lg") }}
+                            {{ form.description(class="form-control form-control-lg", rows="100", cols="100") }}
                         {% endif %}
                     </div>
                 </fieldset>

@@ -18,7 +18,7 @@ def create_table(table_name):
     with db.connect() as conn:
         conn.execute(
             f"CREATE TABLE IF NOT EXISTS {table_name} "
-            "(id int NOT NULL AUTO_INCREMENT, title CHAR(30) NOT NULL UNIQUE, description CHAR(50), PRIMARY KEY (id));"
+            "(id int NOT NULL AUTO_INCREMENT, title CHAR(30) NOT NULL UNIQUE, description CHAR(3000), PRIMARY KEY (id));"
         )
 
 

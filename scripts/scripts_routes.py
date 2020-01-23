@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, redirect, request
+from flask import Blueprint, render_template, url_for, redirect, request, Response
 from forms import ScriptsForm
 from cloud_sql import insert_record, update_record, \
                       search_table, show_record, delete_record
@@ -57,3 +57,15 @@ def delete_script(script_id):
     scripts = search_table("Scripts", "title")
     description = "This is the scripts page for the Knowledge Base web application."
     return render_template("lists.html", title="Scripts", header="Scripts", description=description, items=scripts)
+
+
+@scripts_bp.route("/scripts/download", methods=["GET"])
+def download_scripts():
+    results = search_table("Scripts", "title", "description")
+    csv = "".join([f"{row[0]}, {row[1]}\n" for row in results])
+
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=scripts.csv"})

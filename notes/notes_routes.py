@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, url_for, redirect, request
+from flask import Blueprint, render_template, url_for, redirect, request, Response
 from forms import NotesForm
 from cloud_sql import insert_record, update_record, \
                       search_table, show_record, delete_record
+
 
 notes_bp = Blueprint("notes_bp", __name__, template_folder="templates")
 
@@ -56,3 +57,15 @@ def delete_note(note_id):
     notes = search_table("Notes", "title")
     description = "This is the notes page for the Knowledge Base web application."
     return render_template("lists.html", title="Notes", header="Notes", description=description, items=notes)
+
+
+@notes_bp.route("/notes/download", methods=["GET"])
+def download_notes():
+    results = search_table("Notes", "title", "description")
+    csv = "".join([f"{row[0]}, {row[1]}\n" for row in results])
+
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=notes.csv"})

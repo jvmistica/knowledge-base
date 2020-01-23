@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, redirect, request
+from flask import Blueprint, render_template, url_for, redirect, request, Response
 from forms import RecipesForm
 from cloud_sql import insert_record, update_record, \
                       search_table, show_record, delete_record
@@ -57,3 +57,15 @@ def delete_recipe(recipe_id):
     recipes = search_table("Recipes", "title")
     description = "This is the recipes page for the Knowledge Base web application."
     return render_template("lists.html", title="Recipes", header="Recipes", description=description, items=recipes)
+
+
+@recipes_bp.route("/recipes/download", methods=["GET"])
+def download_recipes():
+    results = search_table("Recipes", "title", "description")
+    csv = "".join([f"{row[0]}, {row[1]}\n" for row in results])
+
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=recipes.csv"})

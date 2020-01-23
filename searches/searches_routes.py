@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, redirect, request
+from flask import Blueprint, render_template, url_for, redirect, request, Response
 from forms import SearchesForm
 from cloud_sql import insert_record, update_record, \
                       search_table, show_record, delete_record
@@ -57,3 +57,15 @@ def delete_search(search_id):
     searches = search_table("Searches", "title")
     description = "This is the searches page for the Knowledge Base web application."
     return render_template("lists.html", title="Searches", header="Searches", description=description, items=searches)
+
+
+@searches_bp.route("/searches/download", methods=["GET"])
+def download_searches():
+    results = search_table("Searches", "title", "description")
+    csv = "".join([f"{row[0]}, {row[1]}\n" for row in results])
+
+    return Response(
+        csv,
+        mimetype="text/csv",
+        headers={"Content-disposition":
+                 "attachment; filename=searches.csv"})

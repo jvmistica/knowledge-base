@@ -14,11 +14,14 @@
     <title>{{ title }}</title>
 </head>
 
-<body style = "font-family:Calibri;">
+<body style="font-family:Calibri;">
     <h4>{{ header }}</h4>
     <p>{{ description }}</p>
     <a href="/">home</a>
-    <a href="/{{ title.lower() }}/new">add new</a>
+    <a href="/{{ title.lower() }}/new">new</a>
+    <a href="/{{ title.lower() }}/download">download</a>
+    <a href="/{{ title.lower() }}/import">import</a>
+    <a href="/{{ title.lower() }}/export">export</a>
     <ul>
         {% for item in items %}
             <li><a href="/{{ title.lower() }}/{{ item[0] }}">{{ item[0] }}</a>

@@ -5,30 +5,30 @@ from wtforms.widgets import TextArea
 
 
 class DashboardsForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=50)])
+    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=3000)])
     description = StringField("Description", widget=TextArea())
     submit = SubmitField("Save")
 
 
 class NotesForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=50)])
+    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=3000)])
     description = StringField("Description", widget=TextArea())
     submit = SubmitField("Save")
 
 
 class RecipesForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=50)])
+    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=3000)])
     description = StringField("Description", widget=TextArea())
     submit = SubmitField("Save")
 
 
 class SearchesForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=50)])
+    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=3000)])
     description = StringField("Description", widget=TextArea())
     submit = SubmitField("Save")
 
 
 class ScriptsForm(FlaskForm):
-    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=50)])
+    title = StringField("Title", validators=[DataRequired(), Length(min=2, max=3000)])
     description = StringField("Description", widget=TextArea())
     submit = SubmitField("Save")
