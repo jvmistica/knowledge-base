@@ -2,48 +2,39 @@
     <head>
         <title>{{ title }}</title>
     </head>
-    <body style = "font-family:Calibri;">
-        <div class="container-fluid">
-            <form method="POST" action="">
-                {{ form.hidden_tag() }}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">New Search</legend>
-                    <br />
-                    <div class="form-group">
-                        {{ form.title.label(class="form-control-label") }}
-    
+    <body style="font-family: Verdana, sans-serif; font-size:12px;">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset style="width:70%">
+                <legend>New Search</legend>
+
+                    {{ form.title.label }}
+                    <div>
                         {% if form.title.errors %}
-                            {{ form.title(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
+                            {{ form.title }}
                                 {% for error in form.title.errors %}
                                     <span>{{ error }}</span>
                                 {% endfor %}
-                            </div>
                         {% else %}
-                            {{ form.title(class="form-control form-control-lg") }}
+                            {{ form.title(rows="1", style="width:100%; font-family: Verdana, sans-serif; font-size: 12px; margin-bottom: 5px;") }}
                         {% endif %}
                     </div>
-                    <br />
-                    <div class="form-group">
-                        {{ form.description.label(class="form-control-label") }}
-    
+
+                    {{ form.description.label }}
+                    <div>
                         {% if form.description.errors %}
-                            {{ form.description(class="form-control form-control-lg is-invalid") }}
-                            <div class="invalid-feedback">
+                            {{ form.description }}
                                 {% for error in form.description.errors %}
                                     <span>{{ error }}</span>
                                 {% endfor %}
-                            </div>
                         {% else %}
-                            {{ form.description(class="form-control form-control-lg") }}
+                            {{ form.description(rows="30", style="width:100%; font-family: Verdana, sans-serif; font-size: 12px; margin-bottom: 5px;") }}
                         {% endif %}
                     </div>
-                </fieldset>
-                <br />
-                <div class="form-group">
-                    {{ form.submit(class="btn btn-outline-info") }}
-                </div>
-            </form>
-        </div>
+
+            </fieldset>
+            {{ form.submit(style="font-family: Verdana, sans-serif; font-size: 12px; margin-top: 5px;") }}
+            {{ form.cancel(style="font-family: Verdana, sans-serif; font-size: 12px; margin-top: 5px;") }}
+        </form>
     </body>
 </html>

@@ -26,7 +26,8 @@ def add_recipe():
 
     try:
         if form.validate_on_submit():
-            insert_record("Recipes", title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                insert_record("Recipes", title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("recipes_bp.list_recipes"))
     except Exception as err:
         form.title.errors = [err]
@@ -44,7 +45,8 @@ def edit_recipe(recipe_id):
 
     try:
         if form.validate_on_submit():
-            update_record("Recipes", id=recipe[0], title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                update_record("Recipes", id=recipe[0], title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("recipes_bp.list_recipes"))
     except Exception as err:
         form.title.errors = [err]

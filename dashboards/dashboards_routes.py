@@ -26,7 +26,8 @@ def add_dashboard():
 
     try:
         if form.validate_on_submit():
-            insert_record("Dashboards", title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                insert_record("Dashboards", title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("dashboards_bp.list_dashboards"))
     except Exception as err:
         form.title.errors = [err]
@@ -44,7 +45,8 @@ def edit_dashboard(dashboard_id):
 
     try:
         if form.validate_on_submit():
-            update_record("Dashboards", id=dashboard[0], title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                update_record("Dashboards", id=dashboard[0], title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("dashboards_bp.list_dashboards"))
     except Exception as err:
         form.title.errors = [err]

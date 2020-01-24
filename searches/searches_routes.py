@@ -26,7 +26,8 @@ def add_search():
 
     try:
         if form.validate_on_submit():
-            insert_record("Searches", title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                insert_record("Searches", title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("searches_bp.list_searches"))
     except Exception as err:
         form.title.errors = [err]
@@ -44,7 +45,8 @@ def edit_search(search_id):
 
     try:
         if form.validate_on_submit():
-            update_record("Searches", id=search[0], title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                update_record("Searches", id=search[0], title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("searches_bp.list_searches"))
     except Exception as err:
         form.title.errors = [err]

@@ -1,7 +1,7 @@
 # Knowledge Base
 ## A knowledge base web application created using Flask.
 
-### Methods
+### Menu Items
 **Dashboards**\
 **Notes**\
 **Recipes**\

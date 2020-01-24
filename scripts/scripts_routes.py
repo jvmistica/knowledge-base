@@ -26,7 +26,8 @@ def add_script():
 
     try:
         if form.validate_on_submit():
-            insert_record("Scripts", title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                insert_record("Scripts", title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("scripts_bp.list_scripts"))
     except Exception as err:
         form.title.errors = [err]
@@ -44,7 +45,8 @@ def edit_script(script_id):
 
     try:
         if form.validate_on_submit():
-            update_record("Scripts", id=script[0], title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                update_record("Scripts", id=script[0], title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("scripts_bp.list_scripts"))
     except Exception as err:
         form.title.errors = [err]

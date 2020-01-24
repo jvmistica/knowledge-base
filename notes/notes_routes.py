@@ -26,7 +26,8 @@ def add_note():
 
     try:
         if form.validate_on_submit():
-            insert_record("Notes", title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                insert_record("Notes", title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("notes_bp.list_notes"))
     except Exception as err:
         form.title.errors = [err]
@@ -44,7 +45,8 @@ def edit_note(note_id):
 
     try:
         if form.validate_on_submit():
-            update_record("Notes", id=note[0], title=form.data.get("title"), description=form.data.get("description"))
+            if form.submit.data:
+                update_record("Notes", id=note[0], title=form.data.get("title"), description=form.data.get("description"))
             return redirect(url_for("notes_bp.list_notes"))
     except Exception as err:
         form.title.errors = [err]
