@@ -31,7 +31,7 @@ def add_recipe():
             return redirect(url_for("recipes_bp.list_recipes"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("new_recipe.html", title="Recipes | New", form=form)
+    return render_template("recipe.html", title="Recipes | New", form=form, action="New")
 
 
 @recipes_bp.route("/recipes/<recipe_id>/edit", methods=["GET", "POST"])
@@ -50,7 +50,7 @@ def edit_recipe(recipe_id):
             return redirect(url_for("recipes_bp.list_recipes"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("edit_recipe.html", title="Recipes | Edit", form=form)
+    return render_template("recipe.html", title="Recipes | Edit", form=form, action="Edit")
 
 
 @recipes_bp.route("/recipes/<recipe_id>/delete", methods=["GET"])

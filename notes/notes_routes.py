@@ -31,7 +31,7 @@ def add_note():
             return redirect(url_for("notes_bp.list_notes"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("new_note.html", title="Notes | New", form=form)
+    return render_template("note.html", title="Notes | New", form=form, action="New")
 
 
 @notes_bp.route("/notes/<note_id>/edit", methods=["GET", "POST"])
@@ -50,7 +50,7 @@ def edit_note(note_id):
             return redirect(url_for("notes_bp.list_notes"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("edit_note.html", title="Notes | Edit", form=form)
+    return render_template("note.html", title="Notes | Edit", form=form, action="Edit")
 
 
 @notes_bp.route("/notes/<note_id>/delete", methods=["GET"])

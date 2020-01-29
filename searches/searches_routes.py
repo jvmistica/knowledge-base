@@ -31,7 +31,7 @@ def add_search():
             return redirect(url_for("searches_bp.list_searches"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("new_search.html", title="Searches | New", form=form)
+    return render_template("search.html", title="Searches | New", form=form, action="New")
 
 
 @searches_bp.route("/searches/<search_id>/edit", methods=["GET", "POST"])
@@ -50,7 +50,7 @@ def edit_search(search_id):
             return redirect(url_for("searches_bp.list_searches"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("edit_search.html", title="Searches | Edit", form=form)
+    return render_template("search.html", title="Searches | Edit", form=form, action="Edit")
 
 
 @searches_bp.route("/searches/<search_id>/delete", methods=["GET"])

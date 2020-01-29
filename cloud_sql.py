@@ -18,7 +18,7 @@ def create_table(table_name):
     with db.connect() as conn:
         conn.execute(
             f"CREATE TABLE IF NOT EXISTS {table_name} "
-            "(id int NOT NULL AUTO_INCREMENT, title CHAR(30) NOT NULL UNIQUE, description CHAR(3000), PRIMARY KEY (id));"
+            "(id int NOT NULL AUTO_INCREMENT, title CHAR(60) NOT NULL UNIQUE, description VARCHAR(3000), PRIMARY KEY (id));"
         )
 
 
@@ -31,13 +31,13 @@ def insert_record(table_name, **properties):
         with db.connect() as conn:
             conn.execute(query)
     except exc.IntegrityError:
-        raise Exception(f"Record {values[0]} already exists.")
+        raise Exception(f"The record {values[0]} already exists.")
 
 
 def update_record(table_name, **properties):
     record_id = properties.get("id")
     title = properties.get("title")
-    description = properties.get("description")
+    description = properties.get("description").replace("'", "\\'")
     query = f"UPDATE {table_name} \
              SET title = '{title}', description = '{description}' \
              WHERE id = '{record_id}';"

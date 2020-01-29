@@ -31,7 +31,7 @@ def add_dashboard():
             return redirect(url_for("dashboards_bp.list_dashboards"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("new_dashboard.html", title="Dashboards | New", form=form)
+    return render_template("dashboard.html", title="Dashboards | New", form=form, action="New")
 
 
 @dashboards_bp.route("/dashboards/<dashboard_id>/edit", methods=["GET", "POST"])
@@ -50,7 +50,7 @@ def edit_dashboard(dashboard_id):
             return redirect(url_for("dashboards_bp.list_dashboards"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("edit_dashboard.html", title="Dashboards | Edit", form=form)
+    return render_template("dashboard.html", title="Dashboards | Edit", form=form, action="Edit")
 
 
 @dashboards_bp.route("/dashboards/<dashboard_id>/delete", methods=["GET"])

@@ -31,7 +31,7 @@ def add_script():
             return redirect(url_for("scripts_bp.list_scripts"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("new_script.html", title="Scripts | New", form=form)
+    return render_template("script.html", title="Scripts | New", form=form, action="New")
 
 
 @scripts_bp.route("/scripts/<script_id>/edit", methods=["GET", "POST"])
@@ -50,7 +50,7 @@ def edit_script(script_id):
             return redirect(url_for("scripts_bp.list_scripts"))
     except Exception as err:
         form.title.errors = [err]
-    return render_template("edit_script.html", title="Scripts | Edit", form=form)
+    return render_template("script.html", title="Scripts | Edit", form=form, action="Edit")
 
 
 @scripts_bp.route("/scripts/<script_id>/delete", methods=["GET"])
