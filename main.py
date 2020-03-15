@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from cloud_sql import create_table
 from dashboards.dashboards_routes import dashboards_bp
 from notes.notes_routes import notes_bp
 from recipes.recipes_routes import recipes_bp
@@ -19,6 +20,15 @@ app.config.from_object("config")
 def home():
     menu_description = "This is the main page of the Knowledge Base web application."
     return render_template("index.html", title="Knowledge Base", menu_title="Main", menu_description=menu_description)
+
+
+@app.route("/initdb")
+def init_db():
+    create_table("Dashboards")
+    create_table("Notes")
+    create_table("Recipes")
+    create_table("Scripts")
+    create_table("Searches")
 
 
 if __name__ == "__main__":
