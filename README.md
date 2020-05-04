@@ -1,9 +1,14 @@
 # Knowledge Base
-## A knowledge base web application created using Flask.
+A knowledge base web application created using Flask.
 
-### Menu Items
-**Dashboards**\
-**Notes**\
-**Recipes**\
-**Scripts**\
-**Searches**
+## Getting Started
+
+Install the required modules:
+```
+pip install -r requirements.txt
+```
+
+Run the main script:
+```
+python main.py
+```
