@@ -8,7 +8,7 @@ Install the required modules:
 pip install -r requirements.txt
 ```
 
-Run the main script:
+Deploy to Google App Engine:
 ```
-python main.py
+gcloud app deploy
 ```
