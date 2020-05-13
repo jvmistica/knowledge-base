@@ -18,12 +18,20 @@ app.config.from_object("config")
 
 @app.route("/")
 def home():
+    """
+    The landing page.
+    """
+
     menu_description = "This is the main page of the Knowledge Base web application."
     return render_template("index.html", title="Knowledge Base", menu_title="Main", menu_description=menu_description)
 
 
 @app.route("/initdb")
 def init_db():
+    """
+    Creates all the required tables.
+    """
+
     create_table("Dashboards")
     create_table("Notes")
     create_table("Recipes")
