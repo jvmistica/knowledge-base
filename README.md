@@ -9,9 +9,9 @@ pip install -r requirements.txt
 ```  
 
 Setup the database:
-1. **Create an SQL instance** by logging into Google Cloud Platform and navigating to Storage > SQL.
+1. Create an SQL instance by logging into Google Cloud Platform and navigating to Storage > SQL.
 2. Click "Create Instance" > "Choose MySQL" and fill up the details for the instance.
-3. **Create a database** by clicking "Databases" > "Create database" under your SQL instance.
+3. Create a database by clicking "Databases" > "Create database" under your SQL instance.
 4. Fill up the details and click "Create"
 5. Change the details in the modules/config.py file:
 ```
